@@ -1,0 +1,8 @@
+NOMBRE; PRECIO; DAÑO; DURABILIDAD; EFECTO
+Puño; 0; 5; ; NINGUNO
+Espada ignea; 10; 10; 15; QUEMADURA
+Lanza relampago; 20; 20; 10; PARALISIS
+Bomba; 50; 200; 1; CONFUSIÓN
+Matadragones; 1000; 50; 40; QUEMADURA
+Aura robaenergía; 0; 60; ; SUEÑO
+Zarpas; 0; 40; ; VENENO
