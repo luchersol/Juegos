@@ -15,6 +15,7 @@ public class Juego {
 	public static List<Personaje> personajes;
 	public static List<Arma> armas;
 	public static Integer persSeleccionado;
+	private static Scanner scan = new Scanner(System.in);
 	
 	public static void mostrarEstadoBatalla() {
 		System.out.println("ALIADOS:");
@@ -66,9 +67,9 @@ public class Juego {
 	}
 	
 	public static void turnoBatalla() {
-		System.out.println("################################");
+		String line = "#".repeat(32);
+		System.out.println(line);
 		if(personajes.get(persSeleccionado).getVidaRestante() != 0) {
-			Scanner scan = new Scanner(System.in);
 			System.out.println("TURNO DE " + personajes.get(persSeleccionado));
 			System.out.println("Opciones: 1-Atacar\t2-Inventario\tOtro-Mostrar estado de batalla");
 			Integer opc = scan.nextInt();
@@ -83,7 +84,7 @@ public class Juego {
 		}
 		pasarTurno();
 		mostrarEstadoBatalla();
-		System.out.println("################################");
+		System.out.println(line);
 	}
 	
 	public static void pasarTurno() {
@@ -91,7 +92,6 @@ public class Juego {
 	}
 	
 	public static void ataqueAliado() {
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Posibles objetivos:");
 		String enemigosPosibles = "";
 		for(int i = 0; i < enemigos.size(); i++) {
@@ -142,8 +142,6 @@ public class Juego {
 		}
 		System.out.println(res);
 	}
-	
-	
 	
 	public static void main(String[] args) {
 		play();

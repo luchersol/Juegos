@@ -13,6 +13,7 @@ public class Tablero {
 	private static List<Integer> posicionesPosibles;
 	private static Tipo turno;
 	private static Tipo ganador;
+	private static Scanner scan = new Scanner(System.in);
 	
 	public static Tipo getTipoPosicion(Integer i) {
 		return tablero.get(i).getTipo();
@@ -39,7 +40,6 @@ public class Tablero {
 		while(!eleccionJugador.contains(choice)) {
 			System.out.println("Choose initial player:" + "\n" + "1.Player X		2.Player O");
 			try {
-				Scanner scan = new Scanner(System.in);
 				choice = scan.nextInt();
 			} catch (Exception e) {
 				System.out.println("You must introduce a number, try again");
@@ -60,7 +60,6 @@ public class Tablero {
 		while(!posicionesPosibles.contains(posicion)) {
 			System.out.println("Choose position, player " + turno);
 			try {
-				Scanner scan = new Scanner(System.in);
 				posicion = scan.nextInt();
 			} catch (Exception e) {
 				System.out.println("You must introduce a number, try again");
@@ -147,7 +146,6 @@ public class Tablero {
 		
 		while(true) {
 			System.out.print("Do you want to play again? [Y/N]:");
-			Scanner scan = new Scanner(System.in);
 			response = scan.next();
 			if(response.equals("Y") || response.equals("N")) break;
 		}

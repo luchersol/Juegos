@@ -10,4 +10,12 @@ public class Pocion extends Objeto{
 		this.efecto = efecto;
 		this.duracion = duracion;
 	}
+
+	public Efecto getEfecto() {
+		return efecto;
+	}
+
+	public Integer getDuracion() {
+		return duracion;
+	}
 }

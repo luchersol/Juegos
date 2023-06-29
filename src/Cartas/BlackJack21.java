@@ -35,7 +35,7 @@ public class BlackJack21 {
 			}
 		}
 		System.out.println("*".repeat(36));
-		System.out.printf("%d puntos\t\t%d puntos\n", jugador1.getPuntaje(), jugador2.getPuntaje());
+		System.out.printf("%d puntos\t\t%d puntos\n", jugador1.getPuntajeBlackJack21(), jugador2.getPuntajeBlackJack21());
 	}
 	
 	public void repartirCartaA(Integer i) {
@@ -76,8 +76,8 @@ public class BlackJack21 {
 		Boolean puntValidoJ1 = jugador1.isPuntajeValido() ;
 		Boolean puntValidoJ2 = jugador2.isPuntajeValido() ;
 		if(puntValidoJ1 && puntValidoJ2) {
-			if(jugador1.getPuntaje() > jugador2.getPuntaje()) mensaje = "Gana jugador 1";
-			else if(jugador1.getPuntaje() < jugador2.getPuntaje()) mensaje = "Gana jugador 2";
+			if(jugador1.getPuntajeBlackJack21() > jugador2.getPuntajeBlackJack21()) mensaje = "Gana jugador 1";
+			else if(jugador1.getPuntajeBlackJack21() < jugador2.getPuntajeBlackJack21()) mensaje = "Gana jugador 2";
 			else mensaje = "Empate";
 		} else if(puntValidoJ1 ^ puntValidoJ2) {
 			if(puntValidoJ1) mensaje = "Gana jugador 1";

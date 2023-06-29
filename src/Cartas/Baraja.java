@@ -2,23 +2,24 @@ package Cartas;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Baraja {
 	enum TipoBaraja {ESPANNOLA, INGLESA}
 	
-	private List<Carta> baraja;
+	private List<Carta> cartas;
 	
 	public Baraja() {
-		this.baraja = new ArrayList<>();
+		this.cartas = new ArrayList<>();
 	}
 	
 	public void addCarta(Carta carta) {
-		this.baraja.add(carta);
+		this.cartas.add(carta);
 	}
 	
 	public void darCarta(Jugador jugador) {
-		jugador.getCartas().add(this.baraja.remove(0));
+		jugador.getCartas().add(this.cartas.remove(0));
 	}
 	
 	public static Baraja crearBaraja(TipoBaraja tipo) {
@@ -41,11 +42,20 @@ public class Baraja {
 	}
 	
 	public void barajar() {
-		Collections.shuffle(baraja);
+		Collections.shuffle(cartas);
+	}
+	
+	public static List<Carta> getNCartas(int n){
+		Baraja baraja = Baraja.crearBaraja(TipoBaraja.INGLESA);
+		baraja.barajar();
+		return baraja.cartas.stream()
+							.limit(n)
+							.sorted(Comparator.comparing(Carta::getValorPoker).reversed())
+							.toList();
 	}
 	
 	public Boolean isEmpty() {
-		return baraja.isEmpty();
+		return cartas.isEmpty();
 	}
 	
 }
