@@ -1,4 +1,4 @@
-package Cartas;
+package Casino;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Cartas;
+package Casino;
 
 import java.util.Comparator;
 import java.util.List;
@@ -51,28 +51,28 @@ public class Carta {
 		Integer valorAgrupacion = 0;
 		if(mismoPalo){
 			if(ordenDeUno && agrupacion.stream().map(c -> c.getValorPoker()).min(Comparator.naturalOrder()).get() == 10){
-				valorAgrupacion = 10; // Escalera real
+				valorAgrupacion = 250; // Escalera real
 			} else if(ordenDeUno) {
-				valorAgrupacion = 9; // Escalera de color
+				valorAgrupacion = 40; // Escalera de color
 			} else {
 				valorAgrupacion = 6; // Color
 			}
 		} else {
 			Map<String, Long> contPorCarta = agrupacion.stream().collect(Collectors.groupingBy(Carta::getCarta, Collectors.counting()));
 			if(contPorCarta.entrySet().stream().filter(entry -> cartasEspeciales.contains(entry.getKey())).anyMatch(entry -> entry.getValue() == 4)){
-				valorAgrupacion = 8; // Poker
+				valorAgrupacion = 20; // Poker
 			} else if(contPorCarta.values().stream().sorted(Comparator.reverseOrder()).limit(2).allMatch(i -> i > 1)) {
-				valorAgrupacion = 7; // Full
+				valorAgrupacion = 9; // Full
 			} else if(ordenDeUno){
 				valorAgrupacion = 5; // Escalera
 			} else if(contPorCarta.values().stream().anyMatch(i -> i == 3)){
-				valorAgrupacion = 4; // Trio
+				valorAgrupacion = 3; // Trio
 			} else if(contPorCarta.values().stream().filter(i -> i == 2).count() == 2){
-				valorAgrupacion = 3; // Doble Pareja
+				valorAgrupacion = 2; // Doble Pareja
 			} else if(contPorCarta.entrySet().stream()
 											.filter(entry -> cartasEspeciales.contains(entry.getKey()) && entry.getValue() == 2)
 											.count() == 1){
-				valorAgrupacion = 2; // Pareja de Jotas o Mejor
+				valorAgrupacion = 1; // Pareja de Jotas o Mejor
 			}
 		}
 

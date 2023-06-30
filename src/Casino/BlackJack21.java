@@ -1,8 +1,8 @@
-package Cartas;
+package Casino;
 
 import java.util.Scanner;
 
-import Cartas.Baraja.TipoBaraja;
+import Casino.Baraja.TipoBaraja;
 
 public class BlackJack21 {
 	private Baraja baraja;

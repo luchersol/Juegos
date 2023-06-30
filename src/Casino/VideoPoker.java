@@ -1,4 +1,4 @@
-package Cartas;
+package Casino;
 
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +38,7 @@ public class VideoPoker {
         Boolean empezarJuego = scan.next().equals("Y");
         game.jugador.mostrarDineroRestante();
         Integer apuesta = 0;
-        while(game.jugador.tieneDinero() && empezarJuego){
+        while(empezarJuego){
             System.out.print("¿Cuánto dinero quiere apostar?\nEuros: ");
             apuesta = scan.nextInt();
             while(apuesta > game.jugador.getDinero()){

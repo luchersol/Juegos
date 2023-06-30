@@ -1,7 +1,7 @@
-# Juegos
+# JUEGOS
 En este proyecto se encuentran diferentes pequeños paquetes de código donde se implementas juegos sencillos en java que se muestran por consola.
 
-## Ajedrez
+## AJEDREZ
 Las piezas son representadas por:
 - R: Torre
 - N: Caballo
@@ -12,21 +12,43 @@ Las piezas son representadas por:
 Las piezas blancas son representadas por mayúsculas y las negras con minúsculas.
 Los movimientos se realizan introduciendo a través del formato estilo "a2 a4", la letra indica la coordenada columna y el número la coordenada fila.
 El código de los movimientos que se pueden hace con cada pieza es el básico, por lo que no existen movimientos especiales como el enroque.
-Por el momento no se puede detectar cuando se está en posición de jaque mate ni cuando la partida está terminada, esto será solo observable por las propias personas que estén jugando. Tampoco existe una forma de volver a un estado anterior del juego, por lo tanto debe de haber cuidado
+Por el momento no se puede detectar cuando se está en posición de jaque mate ni cuando la partida está terminada, esto será solo observable por las propias personas que estén jugando. Tampoco existe una forma de volver a un estado anterior del juego, por lo tanto debe de haber cuidado.
 
-## Cartas
-Juegos de cartas, disponible usar baraja española e inglesa.
-Existe únicamente el BlackJack 21 por el momento y no está implementada la función de apostar.
+## CASINO
+Algunos juegos típicos de casino.
+### BlackJack 21
+Disponible con la baraja española y la inglesa.
+### Video-Poker
+Disponible con la baraja inglesa.
+Empiezas con únicamente 1000€ y puedes ir apostando hasta quedarte en 0€ o cuando tú quieras parar.
+Funciona a través de multiplicadores, siendo las opciones:
+- Escalera Real: x250
+- Escalera de Color: x40
+- Poker: x20
+- Full: x9
+- Escalera: x6
+- Trío: x5
+- Doble Pareja: x2
+- Pareja de J o mejor: x1
+### Maquina Tragaperras
+Empiezas con 100€ y puedes ir apostando hasta quedarte en 0€ o cuando tú quieras parar.
+La apuesta que hagas se hará acorde al número de líneas y multiplicadores que quieras activar (apuesta = multiplicador * númeroLineasActivas)
+Consecuencia de activar líneas:
+- Activar primera línea (obligatorio): se tendrán en cuenta los resultados de la línea horizontal central.
+- Activar segunda línea (opcional): se tendrán en cuenta los resultados de todas las líneas horizontales.
+- Activar tercera línea (opcional): se tendrán en cuenta los resultados de todas las líneas horizontales y de las diagonales.
+Consecuencia de activar multiplicadores:
+- Las ganancias se verán multiplicadas, pero también la cantidad que apostarás.
 
-## Mini Juego RPG
+## MINI JUEGO RPG
 Evento de combate típico de juegos RPG.
 Está incompleto y no es funcional por el momento.
 
-## Ruleta Rusa
+## RULETA RUSA
 Juego simple de ruleta rusa.
 El número de jugadores y tamaño de la ruleta puede ser customizable a través de las variables TAM_RULETA y NUM_JUGADORES, inicialmente se pedirá insertar un número de balas en la ruleta, el juego terminará cuando se terminen todas las balas.
 
-## Tres En Raya
+## TRES EN RAYA
 Existen dos juegos de tres en raya a los que se pueden jugar en esta carpeta.
 ### Tipo 1
 Se accede a través de la clase "Tablero".
