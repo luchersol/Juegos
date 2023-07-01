@@ -58,3 +58,10 @@ La posición a introducir será un número del 0 al 8 que representará el hueco
 Se accede a través de la clase "TresEnRayaCustomizado".
 Una versión del juego en el que se puede modificar el tamaño de la cuadricula a través de la variable BOARD_SIZE y también el número de trazas en línea que se deben encontrar para ganar a través de la variable TRACES_TO_WIN.
 La posición a introducir tendrá un formato estilo "1 2", "1,2" o "1:2", cuyo primer número indica la columna a elegir y el segundo número indica la fila.
+
+## AHORCADO
+Típico juego del ahorcado. 
+La palabra que elige se selecionará de entre una de todas las que hay puestas en el archivo palabras.txt dentro de info/Ahorcado. 
+Tienes que ir añadiendo letras de una en una hasta que se complete el juego o falles 6 veces. 
+Por cada letra correcta esta se añadirá a la palabra sin descubrir, y por cada fallo se te restará una oportunidad. 
+El juego termina cuando se complete la palabra o cuando se fallen todas las veces posibles. En caso de ganar saldrá "WINNER" por pantalla, y en caso de fallar aparecerá "LOSER" junto a la palabra completa.

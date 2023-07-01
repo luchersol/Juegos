@@ -29,7 +29,7 @@ public class Juego {
 	}
 	
 	public static void cargarArmas() {
-		armas = Files2.streamFromFile("../pruebas/info/MiniJuegoRPG/armas")
+		armas = Files2.streamFromFile("info/MiniJuegoRPG/armas")
 						.skip(1)
 						.map(Arma::parseo)
 						.collect(Collectors.toList());
@@ -37,14 +37,14 @@ public class Juego {
 	
 	public static void cargarAliados() {
 		persSeleccionado = 0;
-		aliados = Files2.streamFromFile("../pruebas/info/MiniJuegoRPG/aliados")
+		aliados = Files2.streamFromFile("info/MiniJuegoRPG/aliados")
 				.skip(1)
 				.map(Personaje::parseo)
 				.collect(Collectors.toList());
 	}
 	
 	public static void cargarEnemigos() {
-		enemigos  = Files2.streamFromFile("../pruebas/info/MiniJuegoRPG/enemigos")
+		enemigos  = Files2.streamFromFile("info/MiniJuegoRPG/enemigos")
 				.skip(1)
 				.map(Personaje::parseo)
 				.collect(Collectors.toList());

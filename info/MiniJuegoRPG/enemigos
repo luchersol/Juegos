@@ -1,8 +1,5 @@
-NOMBRE; PRECIO; DAÑO; DURABILIDAD; EFECTO
-Puño; 0; 5; ; NINGUNO
-Espada ignea; 10; 10; 15; QUEMADURA
-Lanza relampago; 20; 20; 10; PARALISIS
-Bomba; 50; 200; 1; CONFUSIÓN
-Matadragones; 1000; 50; 40; QUEMADURA
-Aura robaenergía; 0; 60; ; SUEÑO
-Zarpas; 0; 40; ; VENENO
+NOMBRE; VIDA; ARMA; TIPO; EXP
+Goblin; 100; 0; FUEGO; 20
+Sirena; 200; 1; AGUA; 60
+Mandragora; 50; 2; PLANTA; 10
+Bomb-omb; 10; 3; LUZ; 30
