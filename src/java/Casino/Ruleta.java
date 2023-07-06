@@ -74,8 +74,7 @@ public class Ruleta {
      * Tercio de columnas => Columna_{numeroColumna} 
      * Tercio de filas => Fila_{numeroFila}
      * Mitad => Mitad_{numeroMitad}
-     * Pares => Par
-     * Impar => Impar 
+     * Parirdad => Paridad_{tipoParidad}
     */
 
     public Integer getPremio(int apuesta){
@@ -85,23 +84,22 @@ public class Ruleta {
         Integer data = null;
         Color color = null;
         Paridad paridad = null;
-        if(trozos.length == 2) {
-            if(tipo.equals(TipoApuesta.COLOR)){
-                color = Color.valueOf(trozos[1].toUpperCase());
-            } else if(tipo.equals(TipoApuesta.PARIDAD)){
-                paridad = Paridad.valueOf(trozos[1].toUpperCase());
-            } else {
-                data = Integer.valueOf(trozos[1]);
-            }
-        } 
+        
+        if(tipo.equals(TipoApuesta.COLOR)){
+            color = Color.valueOf(trozos[1].toUpperCase());
+        } else if(tipo.equals(TipoApuesta.PARIDAD)){
+            paridad = Paridad.valueOf(trozos[1].toUpperCase());
+        } else {
+            data = Integer.valueOf(trozos[1]);
+        }
+        
         return apuesta * switch (tipo) {
             case CASILLA -> getPremioCasilla(data);
-            case COLOR -> getPremioColor(color);
             case COLUMNAS -> getPremioColumna(data);
             case FILAS -> getPremioFila(data);
             case MITAD -> getPremioMitad(data);
+            case COLOR -> getPremioColor(color);
             case PARIDAD -> getPremioParidad(paridad);
-            default -> 0;
         };
     }
 

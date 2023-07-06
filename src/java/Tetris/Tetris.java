@@ -3,11 +3,15 @@ package Tetris;
 public class Tetris {
     private String[][] slots;
     private static final int WIDTH = 10;
-    private static final int HEIGHT = 30;
+    private static final int HEIGHT = 20;
     private static final String EMPTY = "-";
 
     public Tetris(){
         this.slots = new String[HEIGHT+5][WIDTH];
+    }
+
+    public void createTetramonio(){
+
     }
 
     public void createTetris(){
@@ -26,6 +30,10 @@ public class Tetris {
             }
             System.out.println(res);
         }
+    }
+
+    public void bajar(){
+    
     }
 
     public static void main(String[] args) {
