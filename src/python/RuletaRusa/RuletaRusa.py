@@ -21,12 +21,11 @@ class RuletaRusa(object):
         return self.__ruleta.pop()
     
     def play(self) -> None:
-        print("Diga cuantas balas dese annadir:")
-        numBalas:int = int(input())
+        numBalas:int = int(input("Diga cuantas balas desee annadir: "))
         print(f"Se annadiran {numBalas} balas")
         self.annadirNBalas(numBalas)
         i:int = 0
-        while(len(self.__huecosBalas) == 0):
+        while(len(self.__huecosBalas) != 0): #isEmpty
            print(f"\nDisparar jugador {i}") 
            balaDisparada: int = self.disparar()
            if(self.__huecosBalas.__contains__(balaDisparada)):

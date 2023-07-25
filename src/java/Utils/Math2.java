@@ -171,7 +171,7 @@ public class Math2 {
 		    return u;
 	}
 	
-    public static Random rnd   = new Random(System.nanoTime());
+    public static Random rnd = new Random(System.nanoTime());
 	  
     public static void initRandom(){
     	rnd   = new Random(System.nanoTime());
