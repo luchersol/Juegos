@@ -2,9 +2,14 @@ package Tetris;
 
 import java.util.function.Predicate;
 
+import Utils.Math2;
+
 public class Tetramino {
-    private String[][] slots;
     // Tipo T,L(y su inverso),I,O,Zig-Zag(y su inverso)
+    private enum TipoTetramino {T, L, L_INV, I, O, ZIG_ZAG, ZIG_ZAG_INV}
+
+    private String[][] slots;
+    private TipoTetramino tipo;
     
     public Tetramino(int i){
         switch (i) {
@@ -15,6 +20,23 @@ public class Tetramino {
             case 4 -> createL_inv();
             case 5 -> createZigZag();
             default -> createZigZag_inv(); 
+        }
+    }
+
+    public static Tetramino createRandomTetramonio(){
+        return new Tetramino(Math2.getEnteroAleatorio(0,7));
+    }
+
+
+    public void rotate(){
+        switch(this.tipo){
+            case I -> null;
+            case L -> null;
+            case L_INV -> null;
+            case O -> null;
+            case T -> null;
+            case ZIG_ZAG -> null;
+            case ZIG_ZAG_INV -> null;   
         }
     }
 
@@ -32,30 +54,37 @@ public class Tetramino {
 
     private void createT(){
         createStructure(2, 3, p -> p.i == 0 || p.j == 1);
+        this.tipo = TipoTetramino.T;
     }
 
     private void createL(){
         createStructure(3, 2, p -> p.i == 2 || p.j == 0);
+        this.tipo = TipoTetramino.L;
     }
 
     private void createL_inv(){
         createStructure(3, 2, p -> p.i == 2 || p.j == 1);
+        this.tipo = TipoTetramino.L_INV;
     }
 
     private void createCube(){
         createStructure(2, 2, p -> true);
+        this.tipo = TipoTetramino.O;
     }
 
     private void createLine(){
         createStructure(1, 4, p -> true);
+        this.tipo = TipoTetramino.I;
     }
 
     private void createZigZag(){
         createStructure(2, 3, p -> !(p.i == 0 && p.j == 2 || p.i == 1 && p.j == 0));
+        this.tipo = TipoTetramino.ZIG_ZAG;
     }
 
     private void createZigZag_inv(){
         createStructure(2, 3, p -> !(p.i == 0 && p.j == 0 || p.i == 1 && p.j == 2));
+        this.tipo = TipoTetramino.ZIG_ZAG_INV;
     }
 
     private record Pair(int i, int j) {

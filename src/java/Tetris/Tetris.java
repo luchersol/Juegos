@@ -4,27 +4,29 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-import Utils.Math2;
-
 public class Tetris {
     private String[][] slots;
     private int points;
+    private Tetramino tetramino;
     private static final int WIDTH = 10;
     private static final int HEIGHT = 20;
+    private static final int SPACE = 5;
     private static final String EMPTY = "-";
     private static Scanner scan = new Scanner(System.in);
+    private static int initialX = 1;
+    private static int initialY = 3;
 
     public Tetris(){
         this.points = 0;
-        this.slots = new String[HEIGHT+5][WIDTH];
+        this.slots = new String[HEIGHT+SPACE][WIDTH];
     }
 
     public void createTetramonio(){
-        Tetramino tetramino = new Tetramino(Math2.getEnteroAleatorio(0, 7));
-        // Empieza sustitución en fila 1, columna 3
-        for(int i = 0; i < tetramino.getHeight(); i++){
-            for(int j = 0; j < tetramino.getWidth(); j++){
-                slots[1+i][3+j] = tetramino.get(i, j);
+        this.tetramino = Tetramino.createRandomTetramonio();
+        // Empieza sustitución en fila 2, columna 3
+        for(int i = 0; i < this.tetramino.getHeight(); i++){
+            for(int j = 0; j < this.tetramino.getWidth(); j++){
+                slots[initialX+i][initialY+j] = this.tetramino.get(i, j);
             }
         }
     }
@@ -32,12 +34,13 @@ public class Tetris {
     public void createTetris(){
         for(int row = 0; row < slots.length; row++){
             for(int column = 0; column < slots[row].length; column++){
-                slots[row][column] = row == 4 ? "_" : EMPTY;
+                slots[row][column] = row == SPACE ? "_" : EMPTY;
             }
         }
     }
 
     public void printTetris(){
+
         for(int row = 0; row < slots.length; row++){
             String res = "";
             for(int column = 0; column < slots[row].length; column++){
@@ -45,13 +48,15 @@ public class Tetris {
             }
             System.out.println(res);
         }
+
+        
         System.out.println(String.format("#### Points: %d ####", points));
     }
 
     public void moveRight(){
         Boolean isValid = IntStream.range(0, 4).boxed().allMatch(i -> slots[i][WIDTH-1].equals(EMPTY));
         if(isValid){
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < SPACE; i++){
                 for(int j = WIDTH - 1; j >= 0; j--){
                     if(slots[i][j].equals("X")){
                         slots[i][j+1] = "X";
@@ -65,7 +70,7 @@ public class Tetris {
     public void moveLeft(){
         Boolean isValid = IntStream.range(0, 4).boxed().allMatch(i -> slots[i][0].equals(EMPTY));
         if(isValid){
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < SPACE; i++){
                 for(int j = 1; j < WIDTH; j++){
                     if(slots[i][j].equals("X")){
                         slots[i][j-1] = "X";
@@ -84,7 +89,7 @@ public class Tetris {
     public void down(){
         Integer cont = Integer.MAX_VALUE;
         for(int j = 0; j < WIDTH; j++){
-            for(int i = 3; i >= 0; i--){
+            for(int i = SPACE - 1; i >= 0; i--){
                 if(slots[i][j].equals("X")){
                     cont = Integer.min(cont, contColision(i, j));
                     break;
@@ -92,7 +97,7 @@ public class Tetris {
             }
         }
 
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < SPACE; i++){
             for(int j = 0; j < WIDTH; j++){
                 if(slots[i][j].equals("X")){
                     slots[i + cont][j] = "X";
@@ -104,11 +109,11 @@ public class Tetris {
     }
 
     public void checkLines(){
-        for(int i = 5; i < slots.length; i++){
+        for(int i = SPACE + 1; i < slots.length; i++){
             Boolean isLineComplete = Arrays.asList(slots[i]).stream().allMatch(slot -> slot.equals("X"));
             if(isLineComplete){
                 points += 100;
-                for(int j = i; j > 5; j--){
+                for(int j = i; j > SPACE + 1; j--){
                     for(int z = 0; z < WIDTH; z++){
                         slots[j][z] = slots[j-1][z];
                     }
@@ -118,7 +123,7 @@ public class Tetris {
     }
 
     public Boolean checkGameOver(){
-        return Arrays.asList(slots[4]).stream().anyMatch(slot -> slot.equals("X"));
+        return Arrays.asList(slots[SPACE]).stream().anyMatch(slot -> slot.equals("X"));
     }
 
     public int contColision(int i, int j){
